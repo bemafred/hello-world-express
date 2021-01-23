@@ -5,13 +5,21 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "firefox",
+            "request": "launch",
+            "reAttach": true,
+            "name": "Launch Firefox Browser",
+            "url": "http://127.0.0.1:3000",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
             "type": "node",
             "request": "launch",
-            "name": "Launch Default Browser",
+            "name": "Launch Node & Default Browser",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\server.js",
+            "program": "${workspaceFolder}${pathSeparator}server.js",
             "serverReadyAction": {
                 "pattern": "listening on port ([0-9]+)",
                 "uriFormat": "http://localhost:%s",
@@ -21,16 +29,30 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Chrome Debug",
+            "name": "Launch Node & Chrome Browser",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\server.js",
+            "program": "${workspaceFolder}${pathSeparator}server.js",
             "serverReadyAction": {
                 "pattern": "listening on port ([0-9]+)",
                 "uriFormat": "http://localhost:%s",
                 "action": "debugWithChrome",
                 "webRoot": "${workspaceFolder}"
+              }
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Node & Firefox Browser",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}${pathSeparator}server.js",
+            "serverReadyAction": {
+                "action": "startDebugging",
+                "pattern": "listening on port ([0-9]+)",
+                "name": "Launch Firefox Browser"
               }
         }
     ]
